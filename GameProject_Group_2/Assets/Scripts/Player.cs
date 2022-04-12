@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             this.enabled = false;
+            gameOverText.text = "Game Over!";
         }
 
     }
