@@ -11,12 +11,15 @@ public class Player : MonoBehaviour
 
     public Text healthtext;
 
+    public Text gameOverText;
+
     private Rigidbody rigid_body;
 
     public GameObject Player_laser_Prefab;
 
     public bool laser_Ready;                       // checks if cooldown is done
 
+    public Vector3 startPos;                       // starting position of the player
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,7 @@ public class Player : MonoBehaviour
 
         rigid_body = GetComponent<Rigidbody>();
 
-        Vector3 startPos;                          // starting position of the player
+                                 
 
         startPos = transform.position;
 
@@ -76,7 +79,7 @@ public class Player : MonoBehaviour
     {
         laser_Ready = false;                                   // deactivate shooting
 
-        yield return new WaitForSeconds(2f);            // wait 2 seconds
+        yield return new WaitForSeconds(2f);                   // wait 2 seconds
 
         laser_Ready = true;                                    // reactivate shooting
     }
@@ -90,6 +93,25 @@ public class Player : MonoBehaviour
             health--;
         }
 
+    }
+
+    private void Respawn()
+    {
+        transform.position = startPos;
+        health--;
+        if (health <= 0)
+        {
+            this.enabled = false;
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Enemy")
+        {
+            Respawn();
+        }
     }
 }
 
