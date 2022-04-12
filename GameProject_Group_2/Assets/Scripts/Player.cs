@@ -13,14 +13,14 @@ public class Player : MonoBehaviour
 
     private Rigidbody rigid_body;
 
-    public GameObject Player_Bullet_Prefab;
+    public GameObject Player_laser_Prefab;
 
-    public bool bullet_Ready;                       // checks if cooldown is done
+    public bool laser_Ready;                       // checks if cooldown is done
 
     // Start is called before the first frame update
     void Start()
     {
-        bullet_Ready = true;
+        laser_Ready = true;
 
         rigid_body = GetComponent<Rigidbody>();
 
@@ -63,22 +63,22 @@ public class Player : MonoBehaviour
         transform.position = temp;  // changes the player position to the temporary one
 
         // Fire projectile if space is pressed
-        if (Input.GetKeyDown("space") && bullet_Ready == true)
+        if (Input.GetKeyDown("space") && laser_Ready == true)
         {
-            Instantiate(Player_Bullet_Prefab, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
+            Instantiate(Player_laser_Prefab, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
             StartCoroutine(coolDown());
 
         }
     }
 
-    // prevents player from spamming bullets by making them wait a couple seconds between firing
+    // prevents player from spamming lasers by making them wait a couple seconds between firing
     IEnumerator coolDown()
     {
-        bullet_Ready = false;                                   // deactivate shooting
+        laser_Ready = false;                                   // deactivate shooting
 
         yield return new WaitForSeconds(2f);            // wait 2 seconds
 
-        bullet_Ready = true;                                    // reactivate shooting
+        laser_Ready = true;                                    // reactivate shooting
     }
 
     private void healthPoints()
