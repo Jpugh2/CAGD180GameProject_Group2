@@ -26,9 +26,7 @@ public class Player : MonoBehaviour
         laser_Ready = true;
 
         rigid_body = GetComponent<Rigidbody>();
-
-                                 
-
+        
         startPos = transform.position;
 
 
@@ -48,10 +46,6 @@ public class Player : MonoBehaviour
         Vector3 temp;
 
         temp = transform.position;                  // checks for player position
-
-
-
-
 
         Vector3 add_position = Vector3.zero;
 
