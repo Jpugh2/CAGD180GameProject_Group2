@@ -102,13 +102,14 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             this.enabled = false;
+            gameOverText.text = "Game Over!";
         }
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "EnemyLaser")
         {
             Respawn();
         }
