@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc2eef61d704a2248b5db0f9de84277c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 15
+  speed: 10
   healthtext: {fileID: 7488624804986597928, guid: 629c35f3e3dec1441bd315dd17544cca, type: 3}
   gameOverText: {fileID: 4113372700653984783, guid: 0a6316608fefdb04bb71d0163b83bf47, type: 3}
   Player_laser_Prefab: {fileID: 1109765246274804405, guid: 8bc5d4c63f09842408cf5dc0b128d138, type: 3}

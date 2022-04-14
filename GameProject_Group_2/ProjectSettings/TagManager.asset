@@ -8,6 +8,7 @@ TagManager:
   - Laser
   - Health
   - EnemyLaser
+  - Wall
   layers:
   - Default
   - TransparentFX
