@@ -26,9 +26,7 @@ public class Player : MonoBehaviour
         laser_Ready = true;
 
         rigid_body = GetComponent<Rigidbody>();
-
-                                 
-
+        
         startPos = transform.position;
 
 
@@ -48,10 +46,6 @@ public class Player : MonoBehaviour
         Vector3 temp;
 
         temp = transform.position;                  // checks for player position
-
-
-
-
 
         Vector3 add_position = Vector3.zero;
 
@@ -79,7 +73,7 @@ public class Player : MonoBehaviour
     {
         laser_Ready = false;                                   // deactivate shooting
 
-        yield return new WaitForSeconds(2f);                   // wait 2 seconds
+        yield return new WaitForSeconds(1f);                   // wait 1 seconds
 
         laser_Ready = true;                                    // reactivate shooting
     }
@@ -87,12 +81,6 @@ public class Player : MonoBehaviour
     private void healthPoints()
     {
         healthtext.text = "Health: " + health;
-        //Once player and enemy are finished, set up collision counters for health
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            health--;
-        }
-
     }
 
     private void Respawn()
@@ -102,7 +90,7 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             this.enabled = false;
-            gameOverText.text = "Game Over!";
+            //gameOverText.text = "Game Over!";
         }
 
     }
