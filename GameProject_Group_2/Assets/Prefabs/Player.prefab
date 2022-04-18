@@ -129,6 +129,9 @@ MonoBehaviour:
   speed: 10
   healthtext: {fileID: 7488624804986597928, guid: 629c35f3e3dec1441bd315dd17544cca, type: 3}
   gameOverText: {fileID: 4113372700653984783, guid: 0a6316608fefdb04bb71d0163b83bf47, type: 3}
+  winText: {fileID: 3924141980952464119, guid: 0399c7cbc763c624d9943cf57afdc90e, type: 3}
+  returnToTitleText: {fileID: 2672523736709604212, guid: 56a632364427c244b803de097715f185, type: 3}
   Player_laser_Prefab: {fileID: 1109765246274804405, guid: 8bc5d4c63f09842408cf5dc0b128d138, type: 3}
   laser_Ready: 0
+  Count: 0
   startPos: {x: 0, y: 0, z: 0}
