@@ -10,13 +10,16 @@ public class SceneTransition : MonoBehaviour
 
     public int sceneChecker = 0;
 
+    public int redoCheck = 0;
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
 
+        redoCheck = 0;
 
-        if (sceneChecker < 4)                   // while the game is still going on, don't destroy these objects
+        if (redoCheck == 0)                   // while the game is still going on, don't destroy these objects
         {
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(this.gameObject);

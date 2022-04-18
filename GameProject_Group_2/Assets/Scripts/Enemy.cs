@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public GameObject leftPoint;
     public GameObject rightPoint;
     private bool goingLeft = true;
+    public static int enemyCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,16 @@ public class Enemy : MonoBehaviour
             {
                 transform.position += Vector3.right * Time.deltaTime * speed;
             }
+        }
+    }
+
+    //If enemy gets hit by player laser, then enemy gets despawned
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Laser")
+        {
+            Destroy(this.gameObject);
+            enemyCount--;
         }
     }
 }
