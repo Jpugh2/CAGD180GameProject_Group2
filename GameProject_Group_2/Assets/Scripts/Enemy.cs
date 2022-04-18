@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public GameObject leftPoint;
     public GameObject rightPoint;
     private bool goingLeft = true;
+    public static int enemyCount = 0;
 
     // Start is called before the first frame update
     void Start()
