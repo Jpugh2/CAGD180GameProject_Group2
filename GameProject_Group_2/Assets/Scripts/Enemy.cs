@@ -64,7 +64,8 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Laser")
         {
-            other.gameObject.SetActive(false);
+            Destroy(this.gameObject);
+            enemyCount--;
         }
     }
 }
