@@ -29,4 +29,15 @@ public class Laser : MonoBehaviour
             transform.position += speed * Vector3.up * Time.deltaTime;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            GameObject.Find("Player").GetComponent<Player>().Count++;       // Finds object with the player tag, gets the Player script, and increases Count by 1
+            GameObject.Find("Player").GetComponent<Player>().AllDead();     // checks if any enemies are left. If none are left, jump to next scene
+        }
+    }
 }
+
