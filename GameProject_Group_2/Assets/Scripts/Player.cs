@@ -125,7 +125,7 @@ public class Player : MonoBehaviour
         if (health <= 0)
         {
             GameOver();
-            //gameOverText.text = "Game Over!";
+            gameOverText.text = "Game Over!";
         }
 
     }
@@ -166,13 +166,13 @@ public class Player : MonoBehaviour
     {
         if (Count == 1)
         {
-            SceneManager.LoadScene(sceneNumber += 1);            // if player has 2 kills, move onto lvl 2
+            SceneManager.LoadScene(sceneNumber += 1);            // if player has 1 kills, move onto lvl 2
         }
-        if (Count == 3)                                         // if six, move to lvl 3
+        if (Count == 3)                                         // if 3, move to lvl 3
         {
             SceneManager.LoadScene(sceneNumber += 1);
         }
-        if (Count == 6)                                         // if 12 move onto lvl 4
+        if (Count == 6)                                         // if 6 move onto lvl 4
         {
             SceneManager.LoadScene(sceneNumber += 1);
         }
