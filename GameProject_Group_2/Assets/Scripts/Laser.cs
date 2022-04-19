@@ -30,9 +30,9 @@ public class Laser : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             Destroy(this.gameObject);
             GameObject.Find("Player").GetComponent<Player>().Count++;       // Finds object with the player tag, gets the Player script, and increases Count by 1

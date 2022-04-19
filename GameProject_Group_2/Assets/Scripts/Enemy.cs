@@ -61,12 +61,12 @@ public class Enemy : MonoBehaviour
     }
 
     //If enemy gets hit by player laser, then enemy gets despawned
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Laser")
         {
-            Destroy(this.gameObject);
             enemyCount--;
+            Destroy(this.gameObject);
         }
     }
 }
