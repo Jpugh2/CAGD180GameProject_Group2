@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         laser_Ready = true;
 
         rigid_body = GetComponent<Rigidbody>();
-        
+
         startPos = transform.position;
 
 
@@ -134,7 +134,6 @@ public class Player : MonoBehaviour
     {
         if (Count == 10)
         {
-
             speed = 0;
             GetComponent<MeshRenderer>().enabled = false;
             winText.text = "You win!!";                          // reveals win text
