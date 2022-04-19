@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -13,11 +14,19 @@ public class Player : MonoBehaviour
 
     public Text gameOverText;
 
+    public Text winText;
+
+    public Text returnToTitleText;
+
     private Rigidbody rigid_body;
 
     public GameObject Player_laser_Prefab;
 
     public bool laser_Ready;                       // checks if cooldown is done
+
+    public int Count = 0;
+
+    public static int sceneNumber = 1;
 
     public Vector3 startPos;                       // starting position of the player
     // Start is called before the first frame update
@@ -26,7 +35,7 @@ public class Player : MonoBehaviour
         laser_Ready = true;
 
         rigid_body = GetComponent<Rigidbody>();
-        
+
         startPos = transform.position;
 
 
@@ -83,16 +92,67 @@ public class Player : MonoBehaviour
         healthtext.text = "Health: " + health;
     }
 
+    private void GameOver()
+    {
+        if (health <= 0)
+        {
+            Count = 0;
+            gameOverText.text = "Game Over.";
+            returnToTitleText.text = "Press Space to return to title screen";
+
+
+            speed = 0;
+            GetComponent<MeshRenderer>().enabled = false;
+            if (Input.GetKeyDown("space"))                        // sends player back to title screen
+            {
+                gameOverText.text = "";                          // gets rid of gameOver text
+                returnToTitleText.text = "";                     // gets rid of return text
+                SceneManager.LoadScene(0);                          // Restarts back at starting screen
+                health = 5;                                      // resets health
+                Destroy(this.gameObject);                        // gets rid of old player object
+                healthtext.text = "";                            // gets rid of old health text
+
+
+            }
+
+        }
+    }
+
     private void Respawn()
     {
         transform.position = startPos;
         health--;
         if (health <= 0)
         {
-            this.enabled = false;
+            GameOver();
             //gameOverText.text = "Game Over!";
         }
 
+    }
+
+    public void WinGame()
+    {
+        if (Count == 16)
+        {
+
+            speed = 0;
+            GetComponent<MeshRenderer>().enabled = false;
+            winText.text = "You win!!";                          // reveals win text
+            returnToTitleText.text = "Press Space to return to title screen";
+            if (Input.GetKeyDown("space"))                       // sends player back to title screen
+            {
+                winText.text = "";                               // gets rid of win text   
+                returnToTitleText.text = "";                         // gets rid of return to title text
+                health = 5;                                      // resets health
+                healthtext.text = "";                            // gets rid of old health text
+                SceneManager.LoadScene(0);                          // Restarts back at starting screen
+                Count = 0;                                           // resets count
+                sceneNumber = 0;                                     // resets scene number
+                Destroy(this.gameObject);                        // gets rid of old player object
+                GameObject.Find("Canvas").GetComponent<SceneTransition>().redoCheck++;
+            }
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -100,6 +160,22 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "EnemyLaser")
         {
             Respawn();
+        }
+    }
+
+    public void AllDead()
+    {
+        if (Count == 2)
+        {
+            SceneManager.LoadScene(sceneNumber += 1);            // if player has 2 kills, move onto lvl 2
+        }
+        if (Count == 6)                                         // if six, move to lvl 3
+        {
+            SceneManager.LoadScene(sceneNumber += 1);
+        }
+        if (Count == 12)                                         // if 12 move onto lvl 4
+        {
+            SceneManager.LoadScene(sceneNumber += 1);
         }
     }
 }

@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public GameObject leftPoint;
     public GameObject rightPoint;
     private bool goingLeft = true;
+    public static int enemyCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,7 @@ public class Enemy : MonoBehaviour
         Move();
     }
 
-   //Function for enemy to move like a sentry
+    //Function for enemy to move like a sentry
     private void Move()
     {
         //if moving left, check boundary, not moving left, add left vector
