@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         Move();
     }
 
-   //Function for enemy to move like a sentry
+    //Function for enemy to move like a sentry
     private void Move()
     {
         //if moving left, check boundary, not moving left, add left vector
