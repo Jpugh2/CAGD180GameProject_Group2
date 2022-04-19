@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
     {
         laser_Ready = false;                                   // deactivate shooting
 
-        yield return new WaitForSeconds(1f);                   // wait 1 seconds
+        yield return new WaitForSeconds(.5f);                   // wait half a seconds
 
         laser_Ready = true;                                    // reactivate shooting
     }
@@ -132,9 +132,8 @@ public class Player : MonoBehaviour
 
     public void WinGame()
     {
-        if (Count == 16)
+        if (Count == 10)
         {
-
             speed = 0;
             GetComponent<MeshRenderer>().enabled = false;
             winText.text = "You win!!";                          // reveals win text
@@ -142,12 +141,12 @@ public class Player : MonoBehaviour
             if (Input.GetKeyDown("space"))                       // sends player back to title screen
             {
                 winText.text = "";                               // gets rid of win text   
-                returnToTitleText.text = "";                         // gets rid of return to title text
+                returnToTitleText.text = "";                     // gets rid of return to title text
                 health = 5;                                      // resets health
                 healthtext.text = "";                            // gets rid of old health text
-                SceneManager.LoadScene(0);                          // Restarts back at starting screen
-                Count = 0;                                           // resets count
-                sceneNumber = 0;                                     // resets scene number
+                SceneManager.LoadScene(0);                       // Restarts back at starting screen
+                Count = 0;                                       // resets count
+                sceneNumber = 0;                                 // resets scene number
                 Destroy(this.gameObject);                        // gets rid of old player object
                 GameObject.Find("Canvas").GetComponent<SceneTransition>().redoCheck++;
             }
@@ -165,15 +164,15 @@ public class Player : MonoBehaviour
 
     public void AllDead()
     {
-        if (Count == 2)
+        if (Count == 1)
         {
             SceneManager.LoadScene(sceneNumber += 1);            // if player has 2 kills, move onto lvl 2
         }
-        if (Count == 6)                                         // if six, move to lvl 3
+        if (Count == 3)                                         // if six, move to lvl 3
         {
             SceneManager.LoadScene(sceneNumber += 1);
         }
-        if (Count == 12)                                         // if 12 move onto lvl 4
+        if (Count == 6)                                         // if 12 move onto lvl 4
         {
             SceneManager.LoadScene(sceneNumber += 1);
         }
